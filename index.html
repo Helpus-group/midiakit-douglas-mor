@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Douglas Mor · Mídia Kit 2026—2027</title>
+<meta name="description" content="Mídia kit do DJ Douglas Mor: House, Progressive House e Melodic House & Techno. Residente da DOPE. Bio, palcos, sets, vídeos, redes, presskit e booking.">
+<meta property="og:title" content="Douglas Mor · Mídia Kit 2026—2027">
+<meta property="og:description" content="House · Progressive House · Melodic House & Techno. Residente da DOPE. Booking: (51) 99160-4664.">
+<meta property="og:image" content="assets/fotos/bio-10.webp">
+<meta name="theme-color" content="#f5f7fa">
+<link rel="icon" href="assets/logo-escura.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<!-- INTRO: DM → DOUGLAS MOR -->
+<div class="intro" id="intro" aria-hidden="true">
+  <img class="intro-logo" src="assets/logo-escura.png" width="1460" height="1698" alt="">
+  <div class="intro-nome"><b>D</b><span>ouglas</span>&nbsp;<b>M</b><span>or</span></div>
+  <div class="intro-carga"><i></i></div>
+</div>
+
+<!-- MENU (aparece depois da abertura) -->
+<header class="topo escondido" id="topo">
+  <a class="topo-marca" href="#deck" aria-label="Início"><img src="assets/logo-escura.png" width="1460" height="1698" alt="DM"><span>Douglas Mor</span></a>
+  <nav class="topo-nav" id="topo-nav"></nav>
+  <a class="topo-cta" data-whats href="#">Booking</a>
+</header>
+
+<main>
+
+<!-- 00 · DECK -->
+<section class="deck" id="deck" aria-label="Abertura">
+  <div class="deck-palco">
+    <div class="deck-fundo" aria-hidden="true"><span>DOUGLAS</span><span>MOR</span></div>
+
+    <div class="lateral lateral-esq" aria-hidden="true"><video muted loop playsinline preload="metadata"></video><small></small></div>
+    <div class="lateral lateral-dir" aria-hidden="true"><video muted loop playsinline preload="metadata"></video><small></small></div>
+
+    <header class="deck-cab">
+      <p class="deck-kicker"><span>Mídia kit</span><b>2026—2027</b></p>
+      <h1 class="deck-nome">Douglas Mor</h1>
+      <p class="deck-sub">DJ · House · Progressive House · Melodic House &amp; Techno · <b>Residente DOPE</b></p>
+    </header>
+
+    <div class="cdj-caixa" id="cdj-caixa">
+    <div class="cdj" id="cdj">
+      <div class="cdj-tela">
+        <div class="tela-topo">
+          <span class="tela-deck">1</span>
+          <span class="tela-faixa"><b id="t-faixa">Live @ DOPE GV</b><small id="t-info">Douglas Mor</small></span>
+          <span class="tela-tom"><small>CLUB</small><b id="t-tom">DOPE</b></span>
+          <span class="tela-sync">SYNC</span>
+          <span class="tela-master">MASTER</span>
+        </div>
+        <div class="tela-onda">
+          <canvas id="onda-zoom" aria-label="Waveform do set"></canvas>
+          <i class="agulha"></i>
+          <div class="beatgrid" id="beatgrid"></div>
+        </div>
+        <div class="tela-leituras">
+          <span class="leit-quadro"><small>TRACK</small><b id="t-track">01</b></span>
+          <span class="leit-tempo"><small>TIME</small><b id="t-tempo">00:00<i>.0</i></b></span>
+          <span class="leit-pitch"><small>TEMPO</small><b id="t-pitch">+0.00<i>%</i></b></span>
+          <span class="leit-bpm"><small>BPM</small><b id="t-bpm">124.0</b></span>
+        </div>
+        <div class="tela-overview" id="overview">
+          <canvas id="onda-geral"></canvas>
+          <i class="ov-pos" id="ov-pos"></i>
+        </div>
+      </div>
+
+      <div class="cdj-cues" id="cues" role="navigation" aria-label="Hot cues: atalhos para as seções"></div>
+
+      <div class="cdj-corpo">
+        <div class="cdj-botoes">
+          <button class="btn-cue" id="btn-cue" type="button" aria-label="Voltar ao início">CUE</button>
+          <button class="btn-play tocando" id="btn-play" type="button" aria-label="Pausar ou tocar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l9 8-9 8z"/><path d="M16 5h2v14h-2zM20 5h2v14h-2z"/></svg>
+          </button>
+        </div>
+        <div class="jog" id="jog" title="Arraste o jog para fazer scratch">
+          <div class="jog-anel"></div>
+          <div class="jog-prato" id="jog-prato">
+            <video id="jog-video" muted loop playsinline preload="metadata"></video>
+            <img src="assets/logo-clara.png" width="1460" height="1698" alt="">
+          </div>
+          <i class="jog-marca" id="jog-marca"></i>
+        </div>
+        <div class="cdj-pitch" aria-hidden="true"><i id="pitch-fader"></i></div>
+      </div>
+    </div>
+    </div>
+
+    <p class="deck-dica" aria-hidden="true"><span>Role para tocar</span> · arraste o jog · toque nos cues</p>
+  </div>
+</section>
+
+<!-- 01 · CAPA -->
+<section class="capa secao" id="capa" data-folio="01">
+  <div class="capa-grade">
+    <p class="rotulo">Mídia kit</p>
+    <h2 class="capa-titulo"><span class="sr">Douglas Mor · </span><span class="linha">Mídia</span><span class="linha">Kit <em>26—27</em></span></h2>
+    <dl class="capa-ficha">
+      <div><dt>Artista</dt><dd>Douglas Mor</dd></div>
+      <div><dt>Som</dt><dd>House · Progressive House · Melodic House &amp; Techno</dd></div>
+      <div><dt>Residência</dt><dd>DOPE</dd></div>
+      <div><dt>Base</dt><dd>Norte do Rio Grande do Sul</dd></div>
+    </dl>
+    <p class="capa-frase">Where words end,<br><b>music begins.</b></p>
+  </div>
+</section>
+
+<!-- 02 · BIO -->
+<section class="bio secao" id="bio" data-folio="02">
+  <div class="bio-grade">
+    <div class="bio-fotos" id="bio-fotos" aria-label="Fotos de divulgação">
+      <div class="bio-pilha" id="bio-pilha"></div>
+      <p class="bio-dica"><span id="bio-num">01</span> / <span id="bio-total">06</span> · arraste ou clique</p>
+    </div>
+    <div class="bio-texto">
+      <p class="rotulo">Bio</p>
+      <h2 class="titulo">Groove, progressão e <em>leitura de pista.</em></h2>
+      <p class="lide">Douglas Mor vem se consolidando como um dos nomes em ascensão na cena eletrônica do Norte do Rio Grande do Sul. Residente da DOPE, tem o <mark>House</mark> como principal referência da sua identidade sonora, mas transita com naturalidade por outras vertentes da música eletrônica, do House ao <mark>Progressive House</mark> e ao <mark>Melodic House &amp; Techno</mark>.</p>
+      <p>Versátil, adapta a seleção à atmosfera e à proposta de cada ambiente sem abrir mão da própria identidade. Seus sets são marcados por grooves consistentes, atmosferas envolventes e uma construção progressiva de energia, sempre em busca de uma conexão natural com a pista.</p>
+      <p>Com uma abordagem voltada à leitura do público e à construção de narrativas musicais, Douglas vem ampliando sua presença e conquistando espaço em diferentes pistas e line-ups. Já dividiu line-up com artistas como ZAC, Victor Lou, GIU, Duarte e Rafael Cerato, com destaque para o closing set na Anti-Dope depois da apresentação de três horas de Rafael Cerato. Em 2026, venceu o contest da Amazon Club para abrir a Inside e conquistou seu lugar no line-up ao lado de D-Nox e PACS.</p>
+      <p>A partir do groove e da progressão, Douglas constrói sets fluidos e dinâmicos, transitando entre atmosferas e níveis de energia sem perder a essência que define sua identidade na pista.</p>
+      <ul class="bio-tags" id="bio-tags">
+        <li data-eq="0.9">House</li><li data-eq="0.7">Progressive House</li><li data-eq="0.6">Melodic House &amp; Techno</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · TRAJETÓRIA -->
+<section class="trajetoria secao" id="trajetoria" data-folio="03">
+  <div class="cab">
+    <p class="rotulo">Trajetória</p>
+    <h2 class="titulo">Da festa da escola <em>à abertura da Inside.</em></h2>
+  </div>
+  <ol class="linha-tempo" id="linha-tempo"></ol>
+</section>
+
+<!-- 04 · PALCOS -->
+<section class="palcos secao azul" id="palcos" data-folio="04">
+  <div class="cab">
+    <p class="rotulo">Onde já tocou</p>
+    <h2 class="titulo">Line-ups <em>divididos.</em></h2>
+  </div>
+  <div class="tracklist" id="tracklist" role="list"></div>
+  <img class="palco-foto" id="palco-foto" alt="" aria-hidden="true">
+  <div class="letreiro" aria-hidden="true"><div class="letreiro-trilho" id="letreiro"></div></div>
+</section>
+
+<!-- 05 · SETS -->
+<section class="sets secao" id="sets" data-folio="05">
+  <div class="cab">
+    <p class="rotulo">Sets gravados</p>
+    <h2 class="titulo">Ouça <em>aqui mesmo.</em></h2>
+    <p class="cab-apoio">Clique na capa para tocar. A waveform acompanha o set e você pode pular para qualquer ponto.</p>
+  </div>
+  <div class="sets-grade" id="sets-grade"></div>
+</section>
+
+<!-- 06 · NA PISTA -->
+<section class="pista secao" id="pista" data-folio="06">
+  <div class="cab">
+    <p class="rotulo">Na pista</p>
+    <h2 class="titulo">Ao vivo, <em>com som.</em></h2>
+    <p class="cab-apoio">Passe o mouse para a prévia e clique para assistir com áudio.</p>
+  </div>
+  <div class="videos" id="videos"></div>
+  <div class="tira" aria-hidden="true"><div class="tira-trilho" id="tira"></div></div>
+</section>
+
+<!-- 07 · REDES -->
+<section class="redes secao azul" id="redes" data-folio="07">
+  <div class="cab">
+    <p class="rotulo">Redes</p>
+    <h2 class="titulo">Siga <em>o Douglas.</em></h2>
+  </div>
+  <div class="redes-lista" id="redes-lista"></div>
+</section>
+
+<!-- 08 · PRESSKIT -->
+<section class="presskit secao" id="presskit" data-folio="08">
+  <div class="presskit-grade">
+    <div class="leque" id="leque" aria-hidden="true"></div>
+    <div class="presskit-texto">
+      <p class="rotulo">Presskit</p>
+      <h2 class="titulo">Fotos e vídeos <em>em alta qualidade.</em></h2>
+      <p>Tudo pronto para flyer, divulgação e imprensa: ensaio de estúdio, fotos de pista e vídeos ao vivo.</p>
+      <div class="botoes">
+        <a class="btn btn-azul" id="btn-presskit" href="#" target="_blank" rel="noopener">Abrir presskit <span aria-hidden="true">↗</span></a>
+        <button class="btn btn-linha" type="button" id="btn-pdf">Salvar este kit em PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · BOOKING -->
+<section class="booking secao" id="booking" data-folio="09">
+  <div class="booking-tela">
+    <p class="rotulo">Booking</p>
+    <h2 class="booking-titulo" id="booking-titulo">Vamos fechar<br><em>a sua data?</em></h2>
+    <div class="booking-acoes">
+      <a class="contato contato-whats" data-whats href="#" target="_blank" rel="noopener">
+        <small>WhatsApp</small><b id="b-fone">(51) 99160-4664</b><span aria-hidden="true">→</span>
+      </a>
+      <button class="contato contato-email" type="button" id="b-email">
+        <small>E-mail · clique para copiar</small><b id="b-email-txt">djdouglasmor@gmail.com</b><span aria-hidden="true" id="b-email-ok">⧉</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <img class="rodape-logo" src="assets/logo-escura.png" width="1460" height="1698" alt="DM · Douglas Mor">
+  <p class="rodape-nome">DOUGLAS MOR</p>
+  <p class="rodape-frase">Where words end, music begins.</p>
+  <p class="rodape-fim">Mídia kit 2026—2027 · <a data-whats href="#">Booking</a></p>
+</footer>
+
+<!-- Barra de reprodução: a página inteira é a faixa -->
+<div class="player escondido" id="player" aria-label="Progresso da navegação">
+  <div class="player-disco" aria-hidden="true"><img src="assets/logo-clara.png" width="1460" height="1698" alt=""></div>
+  <div class="player-faixa"><small id="p-track">Track 01 / 09</small><b id="p-nome">Mídia Kit</b></div>
+  <div class="player-onda" id="p-onda" title="Clique para ir a qualquer ponto do kit">
+    <canvas id="p-canvas"></canvas>
+    <div class="player-cues" id="p-cues"></div>
+    <i class="player-agulha" id="p-agulha"></i>
+  </div>
+  <div class="player-tempo"><b id="p-tempo">00:00</b><small id="p-resta">-00:00</small></div>
+</div>
+
+<a class="whats-flutuante" data-whats href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.3 19.4L3 29l6.8-1.8A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1 1.1-3.9-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5.1 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg>
+</a>
+
+<div class="cinema" id="cinema" role="dialog" aria-modal="true" aria-label="Vídeo ao vivo" hidden>
+  <button class="cinema-fechar" type="button" id="cinema-fechar" aria-label="Fechar">✕</button>
+  <video id="cinema-video" controls playsinline></video>
+</div>
+
+<script src="config.js"></script>
+<script src="assets/data/onda.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
