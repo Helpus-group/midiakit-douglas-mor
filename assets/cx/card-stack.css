@@ -1,0 +1,54 @@
+/* Card Stack · cx-card-stack
+   Monte de cartas que se abre em leque no hover; clicar numa carta traz ela girando para o centro, ampliada. */
+.cx-card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 472px;
+  aspect-ratio: 472 / 380;
+  container-type: inline-size;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.cx-card-stack [data-carta] {
+  position: absolute;
+  left: 34cqw; top: 30cqw;
+  width: 32cqw; height: 44cqw;
+  padding: 0; border: 0; background: none;
+  border-radius: 4cqw;
+  transform-origin: 50% 160%;
+  transform: translateY(var(--oy)) rotate(var(--rot)) scale(var(--esc));
+  transition: transform .62s cubic-bezier(.34, 1.4, .64, 1);
+  transition-delay: var(--atraso, 0ms);
+  cursor: pointer;
+  outline: none;
+}
+.cx-card-stack .cx-ck-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  background: var(--fundo-2);
+  box-shadow: inset 0 0 0 1px var(--linha), 0 1.5cqw 5cqw rgb(0 0 0 / .28);
+  transition: translate .48s cubic-bezier(.4, 0, .2, 1);
+}
+.cx-card-stack [data-carta].is-erguida .cx-ck-face { translate: 0 -5cqw; transition-duration: .3s; }
+.cx-card-stack [data-carta]:focus-visible .cx-ck-face { box-shadow: 0 0 0 2px var(--fundo), 0 0 0 4px var(--acento); }
+.cx-card-stack [data-carta].is-escondida { visibility: hidden; }
+
+.cx-card-stack .cx-ck-vista {
+  position: absolute;
+  z-index: 20;
+  left: 22cqw; top: 6cqw;
+  width: 56cqw; height: 77cqw;
+  transform-style: preserve-3d;
+  will-change: transform;
+  outline: none;
+}
+.cx-card-stack .cx-ck-incl { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .42s cubic-bezier(.22, 1, .36, 1); }
+.cx-card-stack .cx-ck-vista .cx-ck-face { backface-visibility: hidden; border-radius: 6cqw; box-shadow: 0 4cqw 12cqw rgb(0 0 0 / .45); }
+.cx-card-stack .cx-ck-vista .cx-ck-verso { transform: rotateY(180deg); }
+.cx-ck-leitor { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .cx-card-stack [data-carta], .cx-card-stack .cx-ck-face, .cx-card-stack .cx-ck-incl { transition: none; }
+}

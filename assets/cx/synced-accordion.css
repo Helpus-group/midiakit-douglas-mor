@@ -1,0 +1,61 @@
+/* Synced Accordion · cx-synced-accordion
+   Painéis lado a lado: os fechados viram faixas de 72px com nome na vertical; o aberto mostra a foto inteira,
+   tag, contador, título e legenda. Pode sincronizar um texto e uma barra de progresso em outro lugar da página. */
+.cx-synced-accordion {
+  display: flex;
+  gap: var(--cx-sy-gap, 10px);
+  width: 100%;
+  max-width: 1100px;
+  height: var(--cx-sy-altura, 480px);
+  margin: 0 auto;
+}
+.cx-sy-painel {
+  position: relative;
+  flex: 0 0 var(--cx-sy-dobrado, 72px);
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--cx-sy-raio, 24px);
+  background: linear-gradient(160deg, hsl(var(--h, 260) 70% 55%), hsl(calc(var(--h, 260) + 40) 70% 35%));
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: flex .55s cubic-bezier(.3, .8, .2, 1);
+}
+.cx-sy-painel.is-aberto { flex: 1 1 auto; min-width: min(280px, 100%); cursor: default; }
+.cx-sy-painel:focus-visible { box-shadow: inset 0 0 0 2px var(--acento); }
+.cx-sy-painel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform .9s var(--ease); }
+.cx-sy-painel.is-aberto img { transform: scale(1); }
+.cx-sy-sombra { position: absolute; inset: 0; background: rgb(11 11 16 / .55); transition: background .4s; }
+.cx-sy-painel.is-aberto .cx-sy-sombra { background: linear-gradient(180deg, rgb(11 11 16 / .25) 0%, transparent 35%, rgb(11 11 16 / .7) 100%); }
+.cx-sy-dobra { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 18px 0 20px; transition: opacity .3s; }
+.cx-sy-dobra small { font: 500 12px/1 var(--fonte-texto); opacity: .8; }
+.cx-sy-dobra span { writing-mode: vertical-rl; transform: rotate(180deg); font: 500 20px/1.2 var(--fonte-texto); white-space: nowrap; }
+.cx-sy-painel.is-aberto .cx-sy-dobra { opacity: 0; }
+.cx-sy-conteudo { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 24px 26px; opacity: 0; transform: translateY(12px); transition: opacity .4s .18s, transform .5s .18s var(--ease); min-width: 280px; }
+.cx-sy-painel:not(.is-aberto) .cx-sy-conteudo { transition-delay: 0s; transition-duration: .2s; }
+.cx-sy-painel.is-aberto .cx-sy-conteudo { opacity: 1; transform: none; }
+.cx-sy-topo { display: flex; justify-content: space-between; font: 500 12px/1 var(--fonte-texto); letter-spacing: .08em; text-transform: uppercase; }
+.cx-sy-base { margin-top: auto; }
+.cx-sy-base h3 { margin: 0 0 10px; font: 600 clamp(28px, 4vw, 44px)/1.05 var(--fonte-titulo); }
+.cx-sy-base .cx-sy-leg { max-width: 420px; font-size: 15px; line-height: 1.45; opacity: .85; }
+.cx-sy-base .cx-sy-leg p { margin: 0; }
+.cx-sy-base a { display: inline-flex; gap: 6px; margin-top: 14px; color: #fff; font: 500 14px/1 var(--fonte-texto); text-decoration: none; border-bottom: 1px solid rgb(255 255 255 / .5); padding-bottom: 3px; }
+.cx-sy-barra { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgb(255 255 255 / .25); }
+.cx-sy-barra i { position: absolute; inset: 0; background: #fff; transform: scaleX(0); transform-origin: left; }
+.cx-sy-painel.is-aberto.is-rodando .cx-sy-barra i { animation: cx-sy-barra var(--cx-sy-tempo, 6s) linear forwards; }
+.cx-synced-accordion.is-pausado .cx-sy-barra i { animation-play-state: paused; }
+.cx-synced-accordion:not(.tem-auto) .cx-sy-barra { display: none; }
+@keyframes cx-sy-barra { to { transform: scaleX(1); } }
+/* peças sincronizadas em outro lugar da página */
+.cx-sy-texto { display: inline-block; transition: opacity .16s, transform .16s; }
+.cx-sy-texto.is-trocando { opacity: 0; transform: translateY(6px); }
+.cx-sy-progresso { width: 240px; max-width: 100%; height: 3px; border-radius: 999px; background: color-mix(in srgb, var(--texto) 14%, transparent); overflow: hidden; }
+.cx-sy-progresso i { display: block; height: 100%; background: var(--texto); border-radius: inherit; transform-origin: left; transition: transform .4s var(--ease); }
+@media (max-width: 640px) {
+  .cx-synced-accordion { flex-direction: column; height: auto; }
+  .cx-sy-painel { flex: none; height: 60px; transition: height .55s cubic-bezier(.3, .8, .2, 1); }
+  .cx-sy-painel.is-aberto { height: calc(var(--cx-sy-altura, 480px) * .75); }
+  .cx-sy-dobra { flex-direction: row; padding: 0 20px; }
+  .cx-sy-dobra span { writing-mode: horizontal-tb; transform: none; font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .cx-synced-accordion *, .cx-sy-texto, .cx-sy-progresso i { transition: none !important; } }

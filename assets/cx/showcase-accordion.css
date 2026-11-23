@@ -1,0 +1,68 @@
+/* Showcase Accordion · cx-showcase-accordion
+   Colunas claras com miniatura quadrada, "+" e título vertical; a aberta vira foto com título vertical
+   e um card branco por cima (número, local, descrição, botão). */
+.cx-showcase-accordion {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 1180px;
+  height: var(--cx-sa-altura, 440px);
+  margin: 0 auto;
+}
+.cx-sa-item {
+  position: relative;
+  flex: 0 0 var(--cx-sa-coluna, 78px);
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--cx-sa-coluna-fundo, #fff);
+  color: #121212;
+  transition: flex .8s cubic-bezier(.65, 0, .35, 1);
+}
+.cx-sa-item.is-aberto { flex: 1 1 auto; }
+.cx-sa-fechado {
+  all: unset; box-sizing: border-box;
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 14px 0 16px; cursor: pointer;
+  transition: opacity .3s;
+}
+.cx-sa-fechado:focus-visible { outline: 2px solid var(--acento); outline-offset: -3px; border-radius: 10px; }
+.cx-sa-fechado img { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; }
+.cx-sa-mais { font-size: 15px; line-height: 1; opacity: .6; }
+.cx-sa-fechado .cx-sa-vt { margin-top: auto; writing-mode: vertical-rl; transform: rotate(180deg); font: 400 clamp(18px, 1.7vw, 24px)/1 var(--fonte-texto); white-space: nowrap; }
+.cx-sa-item.is-aberto .cx-sa-fechado { opacity: 0; pointer-events: none; }
+.cx-sa-aberto { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .4s; }
+.cx-sa-item.is-aberto .cx-sa-aberto { opacity: 1; pointer-events: auto; transition-delay: .25s; }
+.cx-sa-aberto > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.2s var(--ease); }
+.cx-sa-item.is-aberto .cx-sa-aberto > img { transform: scale(1); }
+.cx-sa-aberto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(0 0 0 / .45), transparent 40%); pointer-events: none; }
+.cx-sa-aberto .cx-sa-vt { position: absolute; z-index: 1; left: 16px; bottom: 18px; writing-mode: vertical-rl; transform: rotate(180deg); color: #fff; font: 400 clamp(20px, 2vw, 28px)/1 var(--fonte-texto); white-space: nowrap; }
+.cx-sa-ficha {
+  position: absolute; z-index: 1; top: 14px; right: 14px; bottom: 14px;
+  width: min(46%, 300px);
+  display: flex; flex-direction: column;
+  padding: 16px 16px 14px;
+  border-radius: 8px;
+  background: #fff; color: #121212;
+  transform: translateX(24px); opacity: 0;
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1), opacity .4s;
+}
+.cx-sa-item.is-aberto .cx-sa-ficha { transform: none; opacity: 1; transition-delay: .4s; }
+.cx-sa-ficha .cx-sa-n { font-size: 10px; opacity: .55; }
+.cx-sa-ficha .cx-sa-seta { position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; border-radius: 50%; background: #121212; color: #fff; display: grid; place-items: center; font-size: 12px; text-decoration: none; }
+.cx-sa-ficha h3 { margin: 8px 0 0; font: 400 clamp(18px, 1.9vw, 26px)/1.12 var(--fonte-texto); letter-spacing: -.01em; }
+.cx-sa-ficha .cx-sa-desc { margin-top: auto; font-size: 11.5px; line-height: 1.5; opacity: .8; }
+.cx-sa-ficha .cx-sa-desc p { margin: 0; }
+.cx-sa-ficha .cx-sa-btn { align-self: flex-start; margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; padding: 5px 5px 5px 12px; border-radius: 99px; background: #121212; color: #fff; text-decoration: none; font: 500 11px/1 var(--fonte-texto); }
+.cx-sa-ficha .cx-sa-btn i { width: 18px; height: 18px; border-radius: 50%; background: #fff; color: #121212; display: grid; place-items: center; font-style: normal; font-size: 10px; }
+@media (max-width: 760px) {
+  .cx-showcase-accordion { flex-direction: column; height: auto; }
+  .cx-sa-item { flex: none; height: 64px; transition: height .7s cubic-bezier(.65, 0, .35, 1); }
+  .cx-sa-item.is-aberto { height: 420px; }
+  .cx-sa-fechado { flex-direction: row; padding: 0 14px; }
+  .cx-sa-fechado .cx-sa-vt { writing-mode: horizontal-tb; transform: none; margin: 0 0 0 4px; font-size: 18px; }
+  .cx-sa-mais { order: 3; margin-left: auto; }
+  .cx-sa-ficha { left: 14px; top: auto; width: auto; height: 62%; }
+}
+@media (prefers-reduced-motion: reduce) { .cx-sa-item, .cx-sa-aberto, .cx-sa-aberto > img, .cx-sa-ficha { transition: none; } }

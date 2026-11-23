@@ -1,0 +1,4 @@
+/* Hover Mask Effect · cx-hover-mask-effect */
+.cx-hover-mask-effect { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.cx-hover-mask-effect canvas { display: block; width: 100%; height: 100%; }
+

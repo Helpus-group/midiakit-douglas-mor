@@ -1,0 +1,4 @@
+/* Particles Waves · cx-particles-waves */
+.cx-particles-waves { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.cx-particles-waves canvas { display: block; width: 100%; height: 100%; }
+
