@@ -428,3 +428,187 @@ body.travado{overflow:hidden}
 
 .rodape{padding-bottom:150px}
 
+
+/* ---------- REVISÃO 6 (24/11/2026) ---------- */
+/* títulos com overflow:hidden (para a entrada) cortavam a última letra larga: folga à direita sem mudar o layout */
+.hero-nome span,.capa-titulo .linha{padding-right:.12em;margin-right:-.12em}
+
+/* Capa + Bio: bloco azul na cor do véu do hero, com Halo Effect sutil */
+:root{--azul-veu:#343cb6;--azul-veu-topo:#262c94}
+.dupla-azul{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:linear-gradient(180deg,var(--azul-veu-topo) 0,var(--azul-veu) 320px,var(--azul-veu) 100%);--linha:rgba(255,255,255,.2)}
+.dupla-azul > .secao{position:relative;z-index:1}
+.dupla-halo{z-index:0 !important}
+.dupla-azul .rotulo{color:#fff}
+.dupla-azul .rotulo::before{color:#c9cdff}
+.dupla-azul em,.dupla-azul .titulo em{color:#c9cdff}
+.dupla-azul .capa-ficha{border-top-color:rgba(255,255,255,.7)}
+.dupla-azul .capa-ficha div:hover{background:rgba(255,255,255,.06)}
+.dupla-azul .capa-ficha dt{color:#b9beff}
+.dupla-azul .capa-frase{color:#c9cdff}
+.dupla-azul .capa-frase b{color:#fff}
+.dupla-azul .bio-texto p{color:rgba(255,255,255,.8)}
+.dupla-azul .bio-dica{color:#b9beff}
+.dupla-azul .bio-dica span:first-child{color:#fff}
+.dupla-azul .bio-tags li{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);color:#fff}
+.dupla-azul .bio-tags li:hover{border-color:#fff}
+.dupla-azul .btn-linha{border-color:rgba(255,255,255,.7);color:#fff}
+.dupla-azul .btn-linha:hover,.dupla-azul .bio-copiar.ok{background:#fff;color:var(--azul-veu);border-color:#fff}
+.dupla-azul .bio-pilha img{box-shadow:0 30px 70px -30px rgba(6,10,60,.7)}
+.dupla-azul ::selection{background:#fff;color:var(--azul-veu)}
+
+/* Trajetória: acordeão de vidro sobre um gradiente azul bem intenso */
+.traj-palco{position:relative;max-width:1280px;margin:0 auto;isolation:isolate}
+.traj-luz{position:absolute;inset:-90px -70px;z-index:0;pointer-events:none;
+  background:radial-gradient(45% 55% at 25% 40%,#6b75ff 0%,transparent 70%),radial-gradient(50% 60% at 80% 65%,#2a34d6 0%,transparent 70%),linear-gradient(160deg,#4652ff,#3340e6 55%,#2b36cf);
+  -webkit-mask:linear-gradient(90deg,transparent,#000 70px,#000 calc(100% - 70px),transparent),linear-gradient(transparent,#000 90px,#000 calc(100% - 90px),transparent);-webkit-mask-composite:source-in;
+  mask:linear-gradient(90deg,transparent,#000 70px,#000 calc(100% - 70px),transparent),linear-gradient(transparent,#000 90px,#000 calc(100% - 90px),transparent);mask-composite:intersect}
+.traj-palco .traj-acordeao{position:relative;z-index:1;border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 40px 90px -40px rgba(20,26,140,.65)}
+.trajetoria .cx-accordion-tab-switch{background:rgba(255,255,255,.12);backdrop-filter:blur(28px) saturate(1.6);-webkit-backdrop-filter:blur(28px) saturate(1.6);color:#fff;--linha:rgba(255,255,255,.22);--texto:#fff;--texto-suave:rgba(255,255,255,.75)}
+.trajetoria .cx-ats-rotulo,.trajetoria .cx-ats-num{color:rgba(255,255,255,.7)}
+.trajetoria .cx-ats-cab{color:#fff;opacity:.55}
+.trajetoria .cx-ats-item.is-aberto .cx-ats-cab{color:#fff;opacity:1}
+.trajetoria .cx-ats-corpo{color:rgba(255,255,255,.88)}
+.trajetoria .cx-ats-midia{background:rgba(10,14,60,.35)}
+@media print{
+  .dupla-azul,.traj-acordeao{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .trajetoria .cx-accordion-tab-switch{background:var(--azul-forte)}
+}
+
+/* Redes · Premium Glow Cards (biblioteca) */
+.redes-lista.cx-premium-glow-cards .rede{min-height:300px;padding:24px;background:none;border-color:rgba(255,255,255,.16);color:#fff;transition:filter .5s ease, transform .4s var(--ease), box-shadow .5s ease}
+.redes-lista .rede::before{content:none}
+.redes-lista .rede:hover{transform:translateY(-4px)}
+.redes-lista .rede-user{display:block;margin:0;font:500 12px/1 var(--mono);letter-spacing:.06em;color:rgba(255,255,255,.5)}
+.redes-lista .rede-icone{position:absolute !important;inset:0;width:auto;height:auto;border-radius:0;background:none;color:rgba(255,255,255,.16);display:grid;place-items:center;pointer-events:none;z-index:5 !important;transition:color .5s, transform .8s var(--ease)}
+.redes-lista .rede-icone svg{width:34%;height:auto;max-width:96px}
+.redes-lista .rede:hover .rede-icone{background:none;color:rgba(255,255,255,.3);transform:scale(1.06)}
+.redes-lista .rede-pe{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.redes-lista .rede-nome{color:#fff}
+.redes-lista .rede-seta{font-size:20px;color:rgba(255,255,255,.7)}
+.redes-lista .rede:hover .rede-seta{transform:translate(4px,-4px);color:#fff}
+.azul .redes-lista .rede{color:#fff;box-shadow:0 0 34px rgba(var(--cx-pg-cor),.16),0 24px 60px -28px rgba(4,6,40,.8)}
+@media (max-width:560px){.redes-lista.cx-premium-glow-cards .rede{min-height:200px}}
+.redes-lista.cx-premium-glow-cards{--cx-pg-fundo:9,12,48}
+
+/* ---------- REVISÃO 7 (24/11/2026) ---------- */
+:root{--fade:clamp(60px,9vw,150px)}
+/* hero termina exatamente na cor do topo do bloco azul: sem linha de divisão */
+.hero-veu{background:linear-gradient(180deg,rgba(26,32,140,.45) 0%,rgba(26,32,140,0) 28%,rgba(26,32,140,0) 52%,rgba(38,44,148,.78) 86%,var(--azul-veu-topo) 100%)}
+
+/* blocos azuis: o azul fica numa camada que se dissolve nas bordas com os blocos claros */
+.dupla-azul,.bg-azul{position:relative;isolation:isolate;background:none !important}
+.dupla-azul::before,.bg-azul::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--bg-azul,var(--azul-bloco));
+  -webkit-mask:var(--mascara,none);mask:var(--mascara,none)}
+.dupla-azul{--bg-azul:linear-gradient(180deg,var(--azul-veu-topo) 0,var(--azul-veu) 320px,var(--azul-veu) 100%);--mascara:linear-gradient(#000 calc(100% - var(--fade)),transparent)}
+.trajetoria.bg-azul{--bg-azul:linear-gradient(180deg,var(--azul-veu) 0,var(--azul-veu) 55%,var(--azul-bloco) 100%);--mascara:linear-gradient(transparent,#000 var(--fade))}
+.palcos.bg-azul{--mascara:linear-gradient(#000 calc(100% - var(--fade)),transparent)}
+.redes.bg-azul{--mascara:linear-gradient(transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent)}
+.dupla-halo,.bg-halo,.redes-fundo{-webkit-mask:var(--mascara,none);mask:var(--mascara,none)}
+.bg-halo{z-index:0 !important}
+.trajetoria > :not(.bg-halo){position:relative;z-index:1}
+/* Trajetória sobre azul */
+.trajetoria{color:#fff}
+.trajetoria .cab .rotulo{color:#fff}
+.trajetoria .cab .rotulo::before{color:#c9cdff}
+.trajetoria .cab .titulo em{color:#c9cdff}
+
+/* Drumskin discreto em todos os blocos claros */
+.com-pele{isolation:isolate}
+.com-pele > :not(.pele){position:relative;z-index:1}
+.pele{z-index:0 !important;pointer-events:none}
+
+/* Na pista: faixa de fotos em duotone azul e branco (a cor volta no hover) */
+.tira img{filter:url(#duotone)}
+.tira img:hover{filter:none}
+
+/* Redes: ícones brancos */
+.redes-lista .rede-icone{color:#fff}
+.redes-lista .rede:hover .rede-icone{color:#fff}
+@media print{.dupla-azul::before,.bg-azul::before{-webkit-mask:none;mask:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}.pele{display:none}}
+/* emendas: a foto do hero some no fim (o fundo do hero é a mesma cor do topo da Capa) e os halos se dissolvem nas bordas */
+.hero{background:var(--azul-veu-topo)}
+.hero-foto{-webkit-mask:linear-gradient(#000 62%,transparent 98%);mask:linear-gradient(#000 62%,transparent 98%)}
+.dupla-halo,.bg-halo{-webkit-mask:linear-gradient(transparent,#000 260px,#000 calc(100% - 260px),transparent);mask:linear-gradient(transparent,#000 260px,#000 calc(100% - 260px),transparent)}
+
+/* ---------- REVISÃO 8 (24/11/2026) ---------- */
+/* Transições azul ↔ claro bem suaves: a camada azul passa da borda da seção (--ext) e se dissolve numa rampa longa com curva (--fl) */
+:root{--ext:clamp(60px,11vw,180px);--fl:clamp(220px,32vw,480px);
+  --rampa:transparent 0,rgba(0,0,0,.02) calc(var(--fl)*.12),rgba(0,0,0,.08) calc(var(--fl)*.25),rgba(0,0,0,.2) calc(var(--fl)*.38),rgba(0,0,0,.38) calc(var(--fl)*.5),rgba(0,0,0,.6) calc(var(--fl)*.63),rgba(0,0,0,.8) calc(var(--fl)*.76),rgba(0,0,0,.94) calc(var(--fl)*.89),#000 var(--fl)}
+.dupla-azul,.palcos,.redes{overflow:visible;overflow-x:clip}
+.dupla-azul::before,.bg-azul::before{-webkit-mask:none;mask:none}
+.fade-cima::before{top:calc(var(--ext) * -1)}
+.fade-baixo::before{bottom:calc(var(--ext) * -1)}
+.fade-cima:not(.fade-baixo)::before{-webkit-mask:linear-gradient(180deg,var(--rampa));mask:linear-gradient(180deg,var(--rampa))}
+.fade-baixo:not(.fade-cima)::before{-webkit-mask:linear-gradient(0deg,var(--rampa));mask:linear-gradient(0deg,var(--rampa))}
+.fade-cima.fade-baixo::before{-webkit-mask:linear-gradient(180deg,var(--rampa)),linear-gradient(0deg,var(--rampa));-webkit-mask-composite:source-in;mask:linear-gradient(180deg,var(--rampa)) exclude,linear-gradient(0deg,var(--rampa));mask-composite:intersect}
+/* halos e ondas: somem antes de chegar às bordas claras */
+.dupla-halo{-webkit-mask:linear-gradient(#000 60%,transparent);mask:linear-gradient(#000 60%,transparent)}
+.trajetoria .bg-halo{-webkit-mask:linear-gradient(transparent,#000 40%);mask:linear-gradient(transparent,#000 40%)}
+.redes-fundo{-webkit-mask:linear-gradient(transparent,#000 30%,#000 70%,transparent);mask:linear-gradient(transparent,#000 30%,#000 70%,transparent)}
+
+/* Capa: ondas de partículas brancas (como nas Redes) */
+.capa{isolation:isolate}
+.capa-ondas{opacity:.7;-webkit-mask:linear-gradient(transparent,#000 25%,#000 65%,transparent);mask:linear-gradient(transparent,#000 25%,#000 65%,transparent)}
+.capa > :not(.capa-ondas){position:relative;z-index:1}
+
+/* Divisória entre Marcos e Palcos (como a linha e o traço de rolagem do hero) */
+.divisoria{position:absolute;top:0;left:var(--pad);right:var(--pad);max-width:1280px;margin:0 auto;height:1px;background:rgba(255,255,255,.28);z-index:2}
+.divisoria i{position:absolute;left:50%;top:-32px;width:1px;height:64px;margin-left:-.5px;overflow:hidden;background:rgba(255,255,255,.2)}
+.divisoria i::after{content:"";position:absolute;inset:0;background:#fff;animation:desce 2.2s var(--ease) infinite}
+
+/* Bio: texto à esquerda, galeria à direita; leitura mais forte */
+.bio-grade{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center}
+.bio-texto p{color:var(--tinta);font-size:16px;font-weight:450;line-height:1.7}
+.bio-galeria{width:100%;max-width:680px;justify-self:end}
+.bio-galeria .cx-shg-card{border-radius:16px}
+.bio-galeria .cx-shg-num{font-family:var(--mono)}
+
+/* Ouça: cards azuis */
+.sets-acordeao.cx-showcase-accordion{--cx-sa-coluna-fundo:var(--azul-bloco)}
+.sets .cx-sa-item{border-color:transparent;color:#fff;box-shadow:0 18px 40px -26px rgba(20,26,140,.7)}
+.sets .cx-sa-fechado{color:#fff}
+.sets .cx-sa-fechado:hover{background:#4651f5}
+.sets .cx-sa-fechado .cx-sa-mais{color:rgba(255,255,255,.7)}
+.sets .cx-sa-ficha{background:var(--azul-bloco);color:#fff}
+.sets .cx-sa-ficha .cx-sa-desc{color:rgba(255,255,255,.75)}
+.sets .cx-sa-ficha .cx-sa-btn,.sets .cx-sa-ficha .cx-sa-seta{background:#fff;color:var(--azul-forte)}
+.sets .cx-sa-ficha .cx-sa-btn i{background:var(--azul-forte);color:#fff}
+.sets .cx-sa-ficha .cx-sa-btn:hover,.sets .cx-sa-ficha .cx-sa-seta:hover{background:var(--tinta);color:#fff}
+
+@media (max-width:900px){
+  .bio-grade{grid-template-columns:1fr}
+  .bio-galeria{justify-self:center;max-width:520px}
+}
+@media print{.dupla-azul::before,.bg-azul::before{top:0;bottom:0}}
+.dupla-halo{-webkit-mask:linear-gradient(transparent,#000 300px,#000 55%,transparent);mask:linear-gradient(transparent,#000 300px,#000 55%,transparent)}
+.bio-galeria .cx-shg-card{outline:1px solid rgba(255,255,255,.5);outline-offset:-1px}
+@media (max-width:760px){.capa-ondas{opacity:.4}}
+
+/* ---------- REVISÃO 9 (24/11/2026) ---------- */
+/* celular: o nome do hero cabe na largura */
+@media (max-width:760px){.hero-nome{font-size:clamp(36px,12.6vw,96px)}}
+
+/* divisória: primeiro a linha horizontal, depois (com um respiro) o traço vertical */
+.divisoria i{top:14px;height:64px}
+
+/* Bio: galeria à esquerda ocupando a altura do texto (do título ao botão), texto à direita */
+.bio-grade{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:stretch}
+.bio-galeria{order:-1;justify-self:stretch;max-width:none;align-self:stretch}
+.bio-galeria.cx-spotlight-hover-gallery{aspect-ratio:auto;height:100%;min-height:560px}
+@media (max-width:900px){.bio-galeria.cx-spotlight-hover-gallery{aspect-ratio:1;height:auto;min-height:0}}
+
+/* Presskit: Helix Spiral */
+.pk-helice{width:100%}
+
+/* Rodapé: nome já colorido e o Douglas em ASCII por cima */
+.rodape{padding-top:40px}
+.rodape-palco{position:relative;width:100%;max-width:1280px;display:grid;justify-items:center;align-items:end;height:clamp(420px,52vw,720px)}
+.rodape-palco .rodape-nome{position:absolute;left:0;right:0;bottom:clamp(40px,8vw,120px);text-align:center;color:var(--azul);-webkit-text-stroke:0;background:linear-gradient(180deg,#6b75ff,var(--azul-forte));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:none}
+.rodape-palco .rodape-nome:hover{color:var(--azul)}
+.rodape-ascii{position:relative;z-index:1;width:min(560px,80%);height:100%}
+.rodape-palco .rodape-nome{z-index:0;opacity:.92}
+.rodape-ascii{z-index:2}
+/* rodapé: nome no azul escuro e Douglas maior */
+.rodape-palco{height:clamp(480px,62vw,860px)}
+.rodape-palco .rodape-nome{background:none;-webkit-text-fill-color:var(--azul-veu-topo);color:var(--azul-veu-topo)}
+.rodape-ascii{width:min(720px,92%)}

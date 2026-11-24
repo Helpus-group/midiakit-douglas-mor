@@ -6,9 +6,12 @@
            data-desbotado (0.75: quão clara a foto fica), data-forca (0.9: tinta por passada; menor = rastro mais difuso), data-veu (cor do véu; padrão #fff; aceita var(--token)),
            data-auto ("x,y" em 0–1: um pincel passeia sozinho em volta desse ponto quando o mouse não está na área),
            data-auto-raio (0.16: tamanho do passeio, fração da largura), data-foco ("x,y" em 0–1: ponto da foto que fica
-           sempre no quadro quando ela é cortada; padrão centro), data-alt (descrição). */
+           sempre no quadro quando ela é cortada; padrão centro), data-alt (descrição),
+           data-revelar-toque (segundos: em telas sem cursor, a foto vai sendo revelada sozinha, a partir do ponto
+           de data-auto ou do foco, até ficar inteira; padrão desligado), data-revelar-espera (segundos antes de começar; padrão 0). */
 (function () {
   var poucoMovimento = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var semCursor = matchMedia("(hover: none)").matches;
   function par(s, p) { if (!s) return p; var v = s.split(",").map(parseFloat); return v.length === 2 && !isNaN(v[0]) && !isNaN(v[1]) ? v : p; }
   function preparar(el) {
     var area = el.parentElement; if (getComputedStyle(area).position === "static") area.style.position = "relative";
@@ -16,6 +19,8 @@
     var o = el.dataset, n = function (k, p) { var v = parseFloat(o[k]); return isNaN(v) ? p : v; };
     var PIN = n("pincel", 180), SUMIR = n("sumir", .012), DESB = n("desbotado", .75), FORCA = n("forca", .9);
     var AUTO = par(o.auto, null), AUTO_R = n("autoRaio", .16), FOCO = par(o.foco, [.5, .5]);
+    var REV = semCursor ? n("revelarToque", 0) : 0, revT0 = null, revelado = false;
+    if (REV > 0) SUMIR = 0;
     var veu = o.veu || "#fff";
     if (veu.indexOf("var(") === 0) veu = getComputedStyle(el).getPropertyValue(veu.slice(4, -1).trim()).trim() || "#fff";
     if (o.alt) { el.setAttribute("role", "img"); el.setAttribute("aria-label", o.alt); } else el.setAttribute("aria-hidden", "true");
@@ -40,6 +45,7 @@
       // base desbotada fica pronta uma vez só (o desfoque é caro para refazer a cada quadro)
       fctx.filter = "grayscale(1) blur(" + 3 * d + "px)"; capa(fctx, w, h); fctx.filter = "none";
       fctx.globalAlpha = DESB; fctx.fillStyle = veu; fctx.fillRect(0, 0, w, h); fctx.globalAlpha = 1;
+      if (revelado) { mctx.fillStyle = "#000"; mctx.fillRect(0, 0, w, h); }
       desenhar();
     }
     function pincel(x, y, forca) {
@@ -55,7 +61,8 @@
       pontos.forEach(function (p) { pincel(p[0] * d, p[1] * d, FORCA); });
       pontos = [];
       // passeio automático: uma curva lenta em volta do ponto de interesse
-      if (AUTO && !dentro && !poucoMovimento) {
+      if (REV > 0 && !revelado) revelar();
+      if (AUTO && !dentro && !poucoMovimento && !revelado) {
         var t = (performance.now() - t0) / 1000, R = AUTO_R * w;
         pincel(AUTO[0] * w + Math.sin(t * .53) * R, AUTO[1] * h + Math.sin(t * .71 + 1.3) * R * .55, .0035);
       }
@@ -63,7 +70,22 @@
       tctx.drawImage(nit, 0, 0); tctx.globalCompositeOperation = "destination-in"; tctx.drawImage(masc, 0, 0); tctx.globalCompositeOperation = "source-over";
       ctx.drawImage(tmp, 0, 0);
     }
-    function laco() { if (!visivel || document.hidden) { rodando = false; return; } desenhar(); requestAnimationFrame(laco); }
+    // celular: uma mancha de bordas macias cresce a partir do ponto de interesse até cobrir a foto inteira.
+    // A máscara é refeita do zero a cada quadro (somar quadros endureceria a borda).
+    function revelar() {
+      var agora = performance.now(); if (revT0 === null) revT0 = agora + n("revelarEspera", 0) * 1000;
+      if (agora < revT0) return;
+      var p = Math.min(1, (agora - revT0) / (REV * 1000)), e = p * p, t = (agora - revT0) / 1000;
+      var c = AUTO || FOCO, cx = c[0] * w, cy = c[1] * h, diag = Math.hypot(w, h), R = Math.min(PIN * d * .8, Math.min(w, h) * .28) + e * diag * 1.5;
+      mctx.globalCompositeOperation = "source-over"; mctx.clearRect(0, 0, w, h);
+      [[0, 0, 1], [Math.cos(t * .9) * .22, Math.sin(t * .7) * .18, .8], [Math.cos(t * .6 + 2) * .26, Math.sin(t * .8 + 1) * .22, .75]].forEach(function (m) {
+        var x = cx + m[0] * R, y = cy + m[1] * R, r = R * m[2], g = mctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(.5, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
+        mctx.fillStyle = g; mctx.fillRect(0, 0, w, h);
+      });
+      if (p >= 1) { mctx.fillStyle = "#000"; mctx.fillRect(0, 0, w, h); revelado = true; }
+    }
+    function laco() { if (!visivel || document.hidden) { rodando = false; return; } desenhar(); if (revelado && REV > 0) { rodando = false; return; } requestAnimationFrame(laco); }
     function ligar() { if (!rodando && visivel && !poucoMovimento) { rodando = true; requestAnimationFrame(laco); } }
     area.addEventListener("pointermove", function (e) {
       var r = el.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;

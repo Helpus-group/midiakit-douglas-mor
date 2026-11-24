@@ -1,0 +1,18 @@
+/* Spotlight Hover Gallery · cx-spotlight-hover-gallery
+   Colagem de fotos sobrepostas e numeradas. O cursor põe uma foto em destaque (cresce, vem para a frente, as outras apagam);
+   clicar leva a foto para o lugar principal com uma mola; sem cursor, as fotos se revezam no lugar principal. */
+.cx-spotlight-hover-gallery { position: relative; width: 100%; aspect-ratio: var(--cx-shg-proporcao, 1); }
+.cx-shg-card {
+  position: absolute; margin: 0; padding: 0; border: 0; overflow: hidden; cursor: pointer; background: #ccd;
+  border-radius: var(--cx-shg-raio, 14px); box-shadow: 0 24px 50px -26px rgba(10, 14, 40, .55);
+  transition: left .8s var(--cx-shg-mola), top .8s var(--cx-shg-mola), width .8s var(--cx-shg-mola), height .8s var(--cx-shg-mola),
+              transform .5s var(--cx-shg-mola), filter .45s ease, box-shadow .45s ease;
+  --cx-shg-mola: cubic-bezier(.34, 1.25, .5, 1);
+}
+.cx-shg-card img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; transition: transform 1.2s cubic-bezier(.2, .8, .2, 1); user-select: none; -webkit-user-drag: none; }
+.cx-shg-num { position: absolute; left: 12px; bottom: 10px; font: 500 11px/1 ui-monospace, "Geist Mono", Menlo, monospace; letter-spacing: .08em; color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, .5); }
+.cx-shg-card:focus-visible { outline: 2px solid var(--acento, #4f5bff); outline-offset: 3px; }
+.cx-spotlight-hover-gallery.tem-foco .cx-shg-card:not(.is-foco) { filter: saturate(.55) brightness(.8) blur(1px); }
+.cx-shg-card.is-foco { transform: scale(1.06); z-index: 30 !important; box-shadow: 0 40px 80px -30px rgba(10, 14, 40, .7); }
+.cx-shg-card.is-foco img { transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) { .cx-shg-card, .cx-shg-card img { transition: none; } }

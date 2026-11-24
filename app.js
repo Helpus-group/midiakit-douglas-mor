@@ -65,33 +65,12 @@
   }
 
   /* =========================================================
-     BIO · pilha de fotos
+     BIO · galeria de fotos
      ========================================================= */
-  const pilha = $("#bio-pilha"), fotos = K.fotosBio.map((src, i) => { const im = el("img"); im.src = src; im.alt = `Douglas Mor, ensaio de divulgação ${i + 1}`; im.loading = "lazy"; im.draggable = false; pilha.append(im); return im; });
-  let frente = 0; $("#bio-total").textContent = String(fotos.length).padStart(2, "0");
-  function arruma(dx = 0) {
-    fotos.forEach((im, i) => {
-      const k = (i - frente + fotos.length) % fotos.length;
-      im.style.zIndex = fotos.length - k;
-      im.style.opacity = k > 3 ? 0 : 1;
-      im.style.filter = k ? `saturate(.6) brightness(${1 - k * .05})` : "none";
-      im.style.transform = k === 0
-        ? `translateX(${dx}px) rotate(${dx / 60}deg)`
-        : `translate(${k * 14}px, ${-k * 14}px) scale(${1 - k * .04})`;
-      im.style.transition = (k === 0 && dx) ? "none" : "";
-    });
-    $("#bio-num").textContent = String(frente + 1).padStart(2, "0");
-  }
-  function proxima(dir = 1) { frente = (frente + dir + fotos.length) % fotos.length; arruma(); }
-  arruma();
-  (() => {
-    let x0 = null, dx = 0, moveu = false;
-    pilha.addEventListener("pointerdown", e => { x0 = e.clientX; dx = 0; moveu = false; pilha.setPointerCapture(e.pointerId); });
-    pilha.addEventListener("pointermove", e => { if (x0 == null) return; dx = e.clientX - x0; if (Math.abs(dx) > 5) moveu = true; arruma(dx); });
-    pilha.addEventListener("pointerup", () => { if (x0 == null) return; x0 = null; if (!moveu) proxima(1); else if (Math.abs(dx) > 70) proxima(dx < 0 ? 1 : -1); else arruma(); });
-  })();
-  let bioVisivel = false; new IntersectionObserver(es => bioVisivel = es[0].isIntersecting).observe(pilha);
-  setInterval(() => { if (bioVisivel && !reduz) proxima(1); }, 4200);
+  /* Spotlight Hover Gallery (biblioteca): colagem numerada; o cursor destaca, o clique leva ao centro */
+  const gal = $("#bio-galeria");
+  Object.assign(gal.dataset, { cx: "spotlight-hover-gallery", auto: "4", proporcao: "1" });
+  K.fotosBio.forEach((src, i) => { const im = el("img"); im.src = src; im.alt = `Douglas Mor, foto ${i + 1}`; im.loading = "lazy"; gal.append(im); });
   revelar($$(".bio-texto > *"), .07);
 
   /* ---------- Marcos da carreira · Accordion Tab Switch (biblioteca) ---------- */
@@ -158,7 +137,7 @@
     const i = $$(".cx-sa-item", sa).indexOf(a.closest(".cx-sa-item")), s = K.sets[i];
     e.preventDefault();
     if (s.tipo === "perfil") { open(s.url, "_blank", "noopener"); return; }
-    somBox.innerHTML = `<p>${s.titulo}</p><iframe title="Player SoundCloud: ${s.titulo}" allow="autoplay" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(s.url)}&color=%233340e6&auto_play=true&visual=true&show_comments=false&hide_related=true&show_teaser=false&show_reposts=false"></iframe>`;
+    somBox.innerHTML = `<p>${s.sub || s.titulo}</p><iframe title="Player SoundCloud: ${s.sub || s.titulo}" allow="autoplay" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(s.url)}&color=%233340e6&auto_play=true&visual=true&show_comments=false&hide_related=true&show_teaser=false&show_reposts=false"></iframe>`;
     somBox.hidden = false; cv2.hidden = true; cinema.hidden = false; document.body.classList.add("travado");
   });
   revelar([sa]); revelar($$("#sets .cab > *"));
@@ -196,20 +175,23 @@
     yt: '<svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>',
     sp: '<svg viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 .25c-2.8-1.7-6.4-2.1-10.6-1.2a.75.75 0 1 1-.3-1.5c4.6-1 8.6-.6 11.7 1.3.4.3.5.7.2 1.1zm1.5-3.3a.94.94 0 0 1-1.3.3c-3.2-2-8.2-2.6-12-1.4a.94.94 0 1 1-.6-1.8c4.4-1.3 9.8-.7 13.5 1.6.5.3.6.9.4 1.3zm.1-3.4C15.3 8.3 8.9 8.1 5.2 9.2a1.1 1.1 0 1 1-.7-2.2c4.2-1.3 11.3-1 15.7 1.6a1.1 1.1 0 0 1-1.1 2z"/></svg>'
   };
+  /* Premium Glow Cards (biblioteca): cards escuros com luz azul flutuando e borda que acende no cursor */
   const rl = $("#redes-lista");
-  K.redes.forEach(r => {
-    const a = el("a", "rede", `<span class="rede-icone">${ICONES[r.icone] || ""}</span><span><span class="rede-nome">${r.nome}</span><span class="rede-user">${r.user}<span class="rede-seta" aria-hidden="true">↗</span></span></span>`);
+  Object.assign(rl.dataset, { cx: "premium-glow-cards", halo: "240", corBorda: "#c9cdff" });
+  const CORES_REDES = ["#4f5bff", "#7a83ff", "#3340e6", "#9aa1ff"];
+  K.redes.forEach((r, i) => {
+    const a = el("a", "rede", `<span class="rede-user">${r.user}</span><span class="rede-icone" aria-hidden="true">${ICONES[r.icone] || ""}</span><span class="rede-pe"><span class="rede-nome">${r.nome}</span><span class="rede-seta" aria-hidden="true">↗</span></span>`);
     a.href = r.url; a.target = "_blank"; a.rel = "noopener";
-    a.addEventListener("pointerenter", e => { const b = a.getBoundingClientRect(); a.style.setProperty("--mx", e.clientX - b.left + "px"); a.style.setProperty("--my", e.clientY - b.top + "px"); });
-    a.addEventListener("pointerleave", e => { const b = a.getBoundingClientRect(); a.style.setProperty("--mx", e.clientX - b.left + "px"); a.style.setProperty("--my", e.clientY - b.top + "px"); });
+    a.dataset.card = ""; a.dataset.cor = CORES_REDES[i % CORES_REDES.length];
     rl.append(a);
   });
   revelar($$(".rede", rl), .1); revelar($$("#redes .cab > *"));
 
   /* ---------- Presskit · Card Stack (biblioteca): as fotos vão passando ---------- */
-  const pk = $("#pk-pilha");
-  Object.assign(pk.dataset, { cx: "card-stack", auto: "3.2" });
-  K.fotosPresskit.forEach((f, i) => { const c = el("div", "", `<img src="${f}" alt="Douglas Mor, foto de divulgação ${i + 1}" loading="lazy" draggable="false">`); c.dataset.carta = ""; c.dataset.titulo = `Foto ${i + 1}`; pk.append(c); });
+  /* Helix Spiral (biblioteca): fotos do presskit numa espiral 3D que gira sozinha e com o arrasto */
+  const pk = $("#pk-helice"), pequeno = matchMedia("(max-width:760px)").matches;
+  Object.assign(pk.dataset, { cx: "helix-spiral", altura: pequeno ? "460" : "600", raio: pequeno ? "150" : "250", largura: pequeno ? "150" : "210", alturaItem: pequeno ? "205" : "290", espaco: "38", velocidade: "0.16", acento: "#4f5bff" });
+  K.fotosPresskit.forEach((f, i) => { const im = el("img"); im.src = f; im.alt = `Douglas Mor, foto de divulgação ${i + 1}`; im.loading = "lazy"; pk.append(im); });
   revelar($$(".presskit-texto > *"), .08);
 
   /* ---------- Booking ---------- */

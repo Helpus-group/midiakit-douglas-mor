@@ -21,6 +21,12 @@
 <link rel="stylesheet" href="assets/cx/particles-waves.css">
 <link rel="stylesheet" href="assets/cx/smooth-gradients.css">
 <link rel="stylesheet" href="assets/cx/card-stack.css">
+<link rel="stylesheet" href="assets/cx/halo-effect.css">
+<link rel="stylesheet" href="assets/cx/premium-glow-cards.css">
+<link rel="stylesheet" href="assets/cx/drumskin.css">
+<link rel="stylesheet" href="assets/cx/spotlight-hover-gallery.css">
+<link rel="stylesheet" href="assets/cx/helix-spiral.css">
+<link rel="stylesheet" href="assets/cx/ascii-hero.css">
 
 <link rel="stylesheet" href="estilo.css">
 </head>
@@ -42,13 +48,13 @@
 </header>
 
 <!-- Fundo das seções claras: Smooth Gradients (biblioteca), azul bem sutil -->
-<div class="fundo-suave" aria-hidden="true"><div data-cx="smooth-gradients" data-c1="#f5f7fa" data-c2="#e4e7ff" data-c3="#cfd4ff" data-c4="#f3f4fb" data-grao="0.018" data-velocidade="0.55" data-qualidade="0.5"></div></div>
+<div class="fundo-suave" aria-hidden="true"><div data-cx="smooth-gradients" data-c1="#eef0fc" data-c2="#cdd2ff" data-c3="#9ea7ff" data-c4="#e3e6ff" data-grao="0.018" data-velocidade="0.55" data-qualidade="0.5"></div></div>
 
 <main>
 
 <!-- 00 · HERO: foto da DOPE que o cursor revela -->
 <section class="hero" id="deck" aria-label="Abertura">
-  <div class="hero-foto" data-cx="hover-mask-effect" data-imagem="assets/pista/hero-amazon.webp" data-alt="Douglas Mor tocando na Amazon Club" data-veu="var(--azul-bloco)" data-desbotado="0.74" data-pincel="460" data-sumir="0.006" data-forca="0.07" data-auto="0.6,0.32" data-auto-raio="0.1" data-foco="0.6,0.35"></div>
+  <div class="hero-foto" data-cx="hover-mask-effect" data-imagem="assets/pista/hero-amazon.webp" data-alt="Douglas Mor tocando na Amazon Club" data-veu="var(--azul-bloco)" data-desbotado="0.74" data-pincel="460" data-sumir="0.006" data-forca="0.07" data-auto="0.6,0.32" data-auto-raio="0.1" data-foco="0.6,0.35" data-revelar-toque="8" data-revelar-espera="2.6"></div>
   <div class="hero-veu" aria-hidden="true"></div>
   <div class="hero-conteudo">
     <p class="hero-kicker"><span>Mídia kit</span><span>2026—2027</span></p>
@@ -64,8 +70,13 @@
   <a class="hero-rolar" href="#capa" aria-label="Rolar para o kit"><i></i></a>
 </section>
 
+<!-- 01 · CAPA num bloco azul, com Halo Effect (continua a cor do véu do hero) -->
+<div class="dupla-azul fade-baixo">
+  <div class="dupla-halo" data-cx="halo-effect" data-quantidade="3,3,2" data-tamanho="560" data-ciclo="7" data-desfoque="130" data-cores="#6d77ff,#1f27a8,#9aa1ff" data-opacidade="0.42"></div>
+
 <!-- 01 · CAPA -->
 <section class="capa secao" id="capa" data-folio="01">
+  <div class="capa-ondas" data-cx="particles-waves" data-cor="#ffffff" data-cor-2="#c3c8ff" data-altura="0.8" data-torcao="0.3" data-colunas="190" data-linhas="70" data-ponto="0.45"></div>
   <div class="capa-grade">
     <p class="rotulo">Mídia kit</p>
     <h2 class="capa-titulo"><span class="sr">Douglas Mor · </span><span class="linha">Mídia</span><span class="linha">Kit <em>26—27</em></span></h2>
@@ -79,39 +90,43 @@
   </div>
 </section>
 
+</div>
+
 <!-- 02 · BIO -->
-<section class="bio secao" id="bio" data-folio="02">
+<section class="bio secao com-pele" id="bio" data-folio="02">
+  <div class="pele" data-cx="drumskin" data-tema="claro" data-cor-fundo="transparente" data-cor-grade="#4f5bff" data-cor-brilho="#3340e6" data-discreto="0.22" data-linhas="0.35" data-calmo="nao" data-intro="nao" data-forca="45" data-abertura="60"></div>
   <div class="bio-grade">
-    <div class="bio-fotos" id="bio-fotos" aria-label="Fotos de divulgação">
-      <div class="bio-pilha" id="bio-pilha"></div>
-      <p class="bio-dica"><span id="bio-num">01</span> / <span id="bio-total">06</span> · arraste ou clique</p>
-    </div>
     <div class="bio-texto">
       <p class="rotulo">Bio</p>
       <h2 class="titulo">Groove, progressão e <em>leitura de pista.</em></h2>
-      <p class="lide">Douglas Mor vem se consolidando como um dos nomes em ascensão na cena eletrônica do Norte do Rio Grande do Sul. Residente da DOPE, tem o <mark>House</mark> como principal referência da sua identidade sonora, mas transita com naturalidade por outras vertentes da música eletrônica, do House ao <mark>Progressive House</mark> e ao <mark>Melodic House &amp; Techno</mark>.</p>
-      <p>Versátil, adapta a seleção à atmosfera e à proposta de cada ambiente sem abrir mão da própria identidade. Seus sets são marcados por grooves consistentes, atmosferas envolventes e uma construção progressiva de energia, sempre em busca de uma conexão natural com a pista.</p>
-      <p>Com uma abordagem voltada à leitura do público e à construção de narrativas musicais, Douglas vem ampliando sua presença e conquistando espaço em diferentes pistas e line-ups. Já dividiu line-up com artistas como ZAC, Victor Lou, GIU, Duarte e Rafael Cerato, com destaque para o closing set na Anti-Dope depois da apresentação de três horas de Rafael Cerato. Em 2026, venceu o contest da Amazon Club para abrir a Inside e conquistou seu lugar no line-up ao lado de D-Nox e PACS.</p>
-      <p>A partir do groove e da progressão, Douglas constrói sets fluidos e dinâmicos, transitando entre atmosferas e níveis de energia sem perder a essência que define sua identidade na pista.</p>
+      <p>Douglas Mor vem se destacando na cena eletrônica do Norte do Rio Grande do Sul. Residente da DOPE, tem no House sua principal referência, explorando também vertentes como Progressive House e Melodic House &amp; Techno.</p>
+      <p>Versátil, combina grooves consistentes, atmosferas envolventes e progressões de energia, adaptando seus sets à identidade de cada pista sem perder sua essência. Com forte leitura de público e construção musical, já dividiu line-up com nomes como ZAC, Victor Lou, GIU, Duarte, Albuquerque e Rafael Cerato.</p>
+      <p>Em 2026, venceu o contest da Amazon Club para abrir a Inside, integrando o line-up ao lado de D-Nox e PACS. Também se destacou pelo closing set na Anti-Dope, após a apresentação de três horas de Rafael Cerato.</p>
       <ul class="bio-tags" id="bio-tags">
         <li>House</li><li>Progressive House</li><li>Melodic House &amp; Techno</li>
       </ul>
       <button class="btn btn-linha bio-copiar" type="button" id="bio-copiar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8h11v13H8zM5 3h11v3H7v11H5z"/></svg><span>Copiar bio</span></button>
     </div>
+    <div class="bio-galeria" id="bio-galeria" aria-label="Fotos de divulgação"></div>
   </div>
 </section>
 
 <!-- 03 · TRAJETÓRIA -->
-<section class="trajetoria secao" id="trajetoria" data-folio="03">
+<section class="trajetoria secao bg-azul fade-cima" id="trajetoria" data-folio="03">
+  <div class="bg-halo" data-cx="halo-effect" data-quantidade="3,3,2" data-tamanho="560" data-ciclo="7" data-desfoque="130" data-cores="#6d77ff,#1f27a8,#9aa1ff" data-opacidade="0.42"></div>
   <div class="cab">
     <p class="rotulo">Marcos da carreira</p>
     <h2 class="titulo">Da residência <em>aos grandes line-ups.</em></h2>
   </div>
-  <div class="traj-acordeao" id="traj-acordeao"></div>
+  <div class="traj-palco">
+    <div class="traj-luz" aria-hidden="true"><div data-cx="halo-effect" data-quantidade="3,3,3" data-tamanho="460" data-ciclo="5" data-desfoque="90" data-cores="#8a92ff,#1f28b8,#a9afff" data-opacidade="0.55"></div></div>
+    <div class="traj-acordeao" id="traj-acordeao"></div>
+  </div>
 </section>
 
 <!-- 04 · PALCOS -->
-<section class="palcos secao azul" id="palcos" data-folio="04">
+<section class="palcos secao azul bg-azul fade-baixo" id="palcos" data-folio="04">
+  <div class="divisoria" aria-hidden="true"><i></i></div>
   <div class="cab">
     <p class="rotulo">Onde já tocou</p>
     <h2 class="titulo">Line-ups <em>divididos.</em></h2>
@@ -123,7 +138,8 @@
 </section>
 
 <!-- 05 · AO VIVO NO YOUTUBE -->
-<section class="aovivo secao" id="aovivo" data-folio="05">
+<section class="aovivo secao com-pele" id="aovivo" data-folio="05">
+  <div class="pele" data-cx="drumskin" data-tema="claro" data-cor-fundo="transparente" data-cor-grade="#4f5bff" data-cor-brilho="#3340e6" data-discreto="0.22" data-linhas="0.35" data-calmo="nao" data-intro="nao" data-forca="45" data-abertura="60"></div>
   <div class="cab">
     <p class="rotulo">Ao vivo no YouTube</p>
     <h2 class="titulo">Sets completos, <em>em vídeo.</em></h2>
@@ -133,7 +149,8 @@
 </section>
 
 <!-- 06 · OUÇA -->
-<section class="sets secao" id="sets" data-folio="06">
+<section class="sets secao com-pele" id="sets" data-folio="06">
+  <div class="pele" data-cx="drumskin" data-tema="claro" data-cor-fundo="transparente" data-cor-grade="#4f5bff" data-cor-brilho="#3340e6" data-discreto="0.22" data-linhas="0.35" data-calmo="nao" data-intro="nao" data-forca="45" data-abertura="60"></div>
   <div class="cab">
     <p class="rotulo">Ouça</p>
     <h2 class="titulo">Ouça <em>aqui mesmo.</em></h2>
@@ -143,7 +160,8 @@
 </section>
 
 <!-- 06 · NA PISTA -->
-<section class="pista secao" id="pista" data-folio="07">
+<section class="pista secao com-pele" id="pista" data-folio="07">
+  <div class="pele" data-cx="drumskin" data-tema="claro" data-cor-fundo="transparente" data-cor-grade="#4f5bff" data-cor-brilho="#3340e6" data-discreto="0.22" data-linhas="0.35" data-calmo="nao" data-intro="nao" data-forca="45" data-abertura="60"></div>
   <div class="cab">
     <p class="rotulo">Na pista</p>
     <h2 class="titulo">Ao vivo, <em>com som.</em></h2>
@@ -154,7 +172,7 @@
 </section>
 
 <!-- 07 · REDES -->
-<section class="redes secao azul" id="redes" data-folio="08">
+<section class="redes secao azul bg-azul fade-cima fade-baixo" id="redes" data-folio="08">
   <div class="redes-fundo" data-cx="particles-waves" data-cor="#ffffff" data-cor-2="#c3c8ff" data-altura="0.8" data-torcao="0.3" data-colunas="190" data-linhas="70" data-ponto="0.45"></div>
   <div class="cab">
     <p class="rotulo">Redes</p>
@@ -164,13 +182,14 @@
 </section>
 
 <!-- 08 · PRESSKIT -->
-<section class="presskit secao" id="presskit" data-folio="09">
+<section class="presskit secao com-pele" id="presskit" data-folio="09">
+  <div class="pele" data-cx="drumskin" data-tema="claro" data-cor-fundo="transparente" data-cor-grade="#4f5bff" data-cor-brilho="#3340e6" data-discreto="0.22" data-linhas="0.35" data-calmo="nao" data-intro="nao" data-forca="45" data-abertura="60"></div>
   <div class="presskit-grade">
-    <div class="pk-pilha" id="pk-pilha"></div>
+    <div class="pk-helice" id="pk-helice" aria-label="Fotos do presskit em espiral"></div>
     <div class="presskit-texto">
       <p class="rotulo">Presskit</p>
       <h2 class="titulo">Fotos e vídeos <em>em alta qualidade.</em></h2>
-      <p>Tudo pronto para flyer, divulgação e imprensa: ensaio de estúdio, fotos de pista e vídeos ao vivo. Passe o mouse na pilha e clique numa foto para ampliar.</p>
+      <p>Tudo pronto para flyer, divulgação e imprensa: ensaio de estúdio, fotos de pista e vídeos ao vivo. Arraste a espiral para girar e clique numa foto para trazê-la à frente.</p>
       <div class="botoes">
         <a class="btn btn-azul" id="btn-presskit" href="#" target="_blank" rel="noopener">Abrir presskit <span aria-hidden="true">↗</span></a>
         <button class="btn btn-linha" type="button" id="btn-pdf">Salvar este kit em PDF</button>
@@ -180,7 +199,8 @@
 </section>
 
 <!-- 09 · BOOKING -->
-<section class="booking secao" id="booking" data-folio="10">
+<section class="booking secao com-pele" id="booking" data-folio="10">
+  <div class="pele" data-cx="drumskin" data-tema="claro" data-cor-fundo="transparente" data-cor-grade="#4f5bff" data-cor-brilho="#3340e6" data-discreto="0.22" data-linhas="0.35" data-calmo="nao" data-intro="nao" data-forca="45" data-abertura="60"></div>
   <div class="booking-tela">
     <p class="rotulo">Booking</p>
     <h2 class="booking-titulo" id="booking-titulo">Vamos fechar<br><em>a sua data?</em></h2>
@@ -199,10 +219,21 @@
 
 <footer class="rodape">
   <img class="rodape-logo" src="assets/logo-escura.png" width="1460" height="1698" alt="DM · Douglas Mor">
-  <p class="rodape-nome">DOUGLAS MOR</p>
+  <div class="rodape-palco">
+    <p class="rodape-nome">DOUGLAS MOR</p>
+    <div class="rodape-ascii" data-cx="ascii-hero" data-imagem="assets/fotos/douglas-recorte.png" data-tinta="#101a2e" data-destaque="#4f5bff" data-celula="8" data-contraste="1.5" data-minimo="3" data-raio="120" data-alt="Douglas Mor em caracteres ASCII"></div>
+  </div>
   <p class="rodape-frase">Where words end, music begins.</p>
   <p class="rodape-fim">Mídia kit 2026—2027 · <a data-whats href="#">Booking</a></p>
 </footer>
+
+<!-- duotone azul e branco (faixa de fotos da pista) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="duotone" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values=".33 .33 .33 0 0  .33 .33 .33 0 0  .33 .33 .33 0 0  0 0 0 1 0"/>
+    <feComponentTransfer><feFuncR type="table" tableValues=".14 1"/><feFuncG type="table" tableValues=".17 1"/><feFuncB type="table" tableValues=".72 1"/></feComponentTransfer>
+  </filter>
+</svg>
 
 <a class="whats-flutuante" data-whats href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.3 19.4L3 29l6.8-1.8A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1 1.1-3.9-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5.1 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg>
@@ -224,6 +255,12 @@
 <script src="assets/cx/particles-waves.js"></script>
 <script src="assets/cx/smooth-gradients.js"></script>
 <script src="assets/cx/card-stack.js"></script>
+<script src="assets/cx/halo-effect.js"></script>
+<script src="assets/cx/premium-glow-cards.js"></script>
+<script src="assets/cx/drumskin.js"></script>
+<script src="assets/cx/spotlight-hover-gallery.js"></script>
+<script src="assets/cx/helix-spiral.js"></script>
+<script src="assets/cx/ascii-hero.js"></script>
 
 </body>
 </html>

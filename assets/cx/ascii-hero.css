@@ -1,0 +1,3 @@
+/* ASCII Hero · cx-ascii-hero */
+.cx-ascii-hero { position: relative; width: 100%; height: 100%; }
+.cx-ascii-hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }

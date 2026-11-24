@@ -1,0 +1,28 @@
+/* Premium Glow Cards · cx-premium-glow-cards
+   Cards escuros com duas manchas de luz da cor do card flutuando dentro, brilho interno na base,
+   borda que acende em volta do cursor e os outros cards apagados enquanto um está em foco. */
+.cx-premium-glow-cards { --cx-pg-raio: 22px; --cx-pg-fundo: 6, 8, 24; --cx-pg-borda: .14; }
+.cx-premium-glow-cards [data-card] {
+  position: relative; overflow: hidden; isolation: isolate; border-radius: var(--cx-pg-raio);
+  border: 1px solid rgba(255, 255, 255, var(--cx-pg-borda));
+  box-shadow: 0 0 34px rgba(var(--cx-pg-cor), .16);
+  transition: filter .5s ease, transform .4s ease, box-shadow .5s ease;
+  color: #fff;
+}
+.cx-premium-glow-cards [data-card] > *:not(.cx-pg-camada) { position: relative; z-index: 10; }
+.cx-pg-camada { position: absolute; pointer-events: none; }
+.cx-pg-base { inset: 0; z-index: 0; background: linear-gradient(160deg, rgba(var(--cx-pg-cor), .2) 0%, rgba(var(--cx-pg-fundo), .94) 100%), rgb(var(--cx-pg-fundo)); }
+.cx-pg-mancha { left: 0; top: 0; z-index: 1; border-radius: 50%; will-change: transform; }
+.cx-pg-m1 { width: 75%; height: 75%; filter: blur(36px); background: radial-gradient(circle, rgba(var(--cx-pg-cor), .8) 0%, rgba(var(--cx-pg-cor), .28) 60%, transparent 80%); }
+.cx-pg-m2 { width: 55%; height: 55%; filter: blur(26px); opacity: .85; background: radial-gradient(circle, rgba(var(--cx-pg-cor), .7) 0%, transparent 70%); }
+.cx-pg-brilho { inset: 0; z-index: 3; border-radius: inherit; box-shadow: inset 0 -70px 55px -25px rgba(var(--cx-pg-cor), .4), inset 0 -35px 25px -6px rgba(var(--cx-pg-cor), .2), inset 0 -18px 18px -5px rgba(255, 255, 255, .1); }
+.cx-pg-hover { inset: 0; z-index: 9; border-radius: inherit; opacity: 0; transition: opacity .5s ease;
+  background: radial-gradient(340px circle at var(--cx-pg-x, 50%) var(--cx-pg-y, 50%), rgba(var(--cx-pg-cor), .07), transparent 60%); }
+.cx-pg-hover::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px;
+  background: radial-gradient(var(--cx-pg-halo, 260px) circle at var(--cx-pg-x, 50%) var(--cx-pg-y, 50%), rgba(var(--cx-pg-cor-borda, var(--cx-pg-cor)), 1), transparent 45%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0); }
+.cx-premium-glow-cards:hover .cx-pg-hover { opacity: 1; }
+.cx-premium-glow-cards:has([data-card]:hover) [data-card]:not(:hover) { filter: saturate(.15) brightness(.5); }
+.cx-premium-glow-cards [data-card]:hover { filter: saturate(1.2) brightness(1.08); box-shadow: 0 0 50px rgba(var(--cx-pg-cor), .3); }
+@media (hover: none) { .cx-premium-glow-cards .cx-pg-hover { opacity: 0 !important; } }
+@media (prefers-reduced-motion: reduce) { .cx-premium-glow-cards [data-card] { transition: none; } }

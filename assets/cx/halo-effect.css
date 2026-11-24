@@ -1,0 +1,8 @@
+/* Halo Effect · cx-halo-effect */
+.cx-halo-effect { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.cx-halo-effect span {
+  position: absolute; left: 0; top: 0; border-radius: 50%;
+  opacity: var(--cx-he-op, .7); filter: blur(var(--cx-he-blur, 60px));
+  transition: transform var(--cx-he-dur, 3s) ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) { .cx-halo-effect span { transition: none; } }

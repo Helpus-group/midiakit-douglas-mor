@@ -1,0 +1,11 @@
+/* Helix Spiral · cx-helix-spiral */
+.cx-helix-spiral { position: relative; width: 100%; height: var(--cx-hx-altura, 560px); overflow: hidden; perspective: var(--cx-hx-perspectiva, 1400px); touch-action: pan-y; cursor: grab; outline: none;
+  -webkit-mask: linear-gradient(transparent 0, #000 var(--cx-hx-borda, 18%), #000 calc(100% - var(--cx-hx-borda, 18%)), transparent 100%);
+  mask: linear-gradient(transparent 0, #000 var(--cx-hx-borda, 18%), #000 calc(100% - var(--cx-hx-borda, 18%)), transparent 100%); }
+.cx-helix-spiral.arrastando { cursor: grabbing; }
+.cx-hx-centro { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.cx-hx-item { position: absolute; left: 0; top: 0; margin: 0; padding: 0; border: 0; overflow: hidden; cursor: pointer; background: #1a1d2e;
+  border-radius: var(--cx-hx-raio, 18px); will-change: transform, opacity, filter; box-shadow: 0 30px 60px -30px rgba(10, 14, 40, .55); }
+.cx-hx-item img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+.cx-hx-item.is-foco { box-shadow: 0 0 0 1.5px var(--cx-hx-acento, #4f5bff), 0 40px 80px -30px rgba(10, 14, 40, .6); }
+.cx-hx-luz { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--cx-hx-acento, #4f5bff) 22%, transparent), transparent 62%); }
