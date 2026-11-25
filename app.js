@@ -81,7 +81,15 @@
     it.dataset.item = ""; it.dataset.imagem = m.foto; it.dataset.alt = `Douglas Mor · ${m.titulo}`;
     ta.append(it);
   });
-  revelar([ta]); revelar($$("#trajetoria .cab > *"));
+  if (!matchMedia("(max-width:760px)").matches) revelar([ta]); revelar($$("#trajetoria .cab > *"));
+  // celular: a foto de cada marco abre dentro do próprio item, acima do texto
+  addEventListener("load", () => {
+    if (!matchMedia("(max-width:760px)").matches) return;
+    $$(".cx-ats-item", ta).forEach((it, i) => {
+      const alvo = $(".cx-ats-painel > div", it); if (!alvo || !K.marcos[i]) return;
+      const im = el("img", "tj-foto-m"); im.src = K.marcos[i].foto; im.alt = ""; im.loading = "lazy"; alvo.prepend(im);
+    });
+  });
 
   /* ---------- Palcos · Synced Accordion (biblioteca) ---------- */
   const pa = $("#palcos-acordeao");
@@ -180,7 +188,7 @@
   Object.assign(rl.dataset, { cx: "premium-glow-cards", halo: "240", corBorda: "#c9cdff" });
   const CORES_REDES = ["#4f5bff", "#7a83ff", "#3340e6", "#9aa1ff"];
   K.redes.forEach((r, i) => {
-    const a = el("a", "rede", `<span class="rede-user">${r.user}</span><span class="rede-icone" aria-hidden="true">${ICONES[r.icone] || ""}</span><span class="rede-pe"><span class="rede-nome">${r.nome}</span><span class="rede-seta" aria-hidden="true">↗</span></span>`);
+    const a = el("a", `rede rede-${r.icone}`, `<span class="rede-user">${r.user}</span><span class="rede-icone" aria-hidden="true">${ICONES[r.icone] || ""}</span><span class="rede-pe"><span class="rede-nome">${r.nome}</span><span class="rede-seta" aria-hidden="true">↗</span></span>`);
     a.href = r.url; a.target = "_blank"; a.rel = "noopener";
     a.dataset.card = ""; a.dataset.cor = CORES_REDES[i % CORES_REDES.length];
     rl.append(a);

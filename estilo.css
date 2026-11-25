@@ -612,3 +612,30 @@ body.travado{overflow:hidden}
 .rodape-palco{height:clamp(480px,62vw,860px)}
 .rodape-palco .rodape-nome{background:none;-webkit-text-fill-color:var(--azul-veu-topo);color:var(--azul-veu-topo)}
 .rodape-ascii{width:min(720px,92%)}
+
+/* ---------- REVISÃO 11 (25/11/2026) · ajustes de celular ---------- */
+.tj-foto-m{display:none}
+@media (max-width:900px){
+  .bio-grade{grid-template-columns:minmax(0,1fr)}
+  .bio-galeria{order:-1}
+}
+@media (max-width:760px){
+  /* Marcos: sem vidro nem luzes animadas (o celular renderizava com falhas); foto dentro de cada item */
+  .trajetoria .cx-accordion-tab-switch{backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.08))}
+  .traj-luz,.trajetoria .bg-halo{display:none}
+  .trajetoria .cx-ats-midia{display:none}
+  .tj-foto-m{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 25%;border-radius:12px;margin:2px 0 14px}
+  .palcos.bg-azul::before{top:-2px}
+  /* Ouça: sem o título vertical branco no card aberto */
+  .sets .cx-sa-aberto .cx-sa-vt{display:none}
+  /* Redes: ícones com a mesma altura visível (a do SoundCloud) */
+  .redes-lista .rede-icone svg{width:auto;max-width:none}
+  .redes-lista .rede-ig .rede-icone svg,.redes-lista .rede-sp .rede-icone svg{height:46px}
+  .redes-lista .rede-yt .rede-icone svg{height:66px}
+  .redes-lista .rede-sc .rede-icone svg{height:98px}
+  /* Booking: botões centralizados e e-mail menor */
+  .booking-acoes{grid-template-columns:minmax(0,1fr)}
+  .contato{min-width:0}
+  .contato-email b{font-size:min(4.1vw,18px)}
+}
+.rodape{padding-top:60px}
