@@ -80,7 +80,7 @@
       mctx.globalCompositeOperation = "source-over"; mctx.clearRect(0, 0, w, h);
       [[0, 0, 1], [Math.cos(t * .9) * .22, Math.sin(t * .7) * .18, .8], [Math.cos(t * .6 + 2) * .26, Math.sin(t * .8 + 1) * .22, .75]].forEach(function (m) {
         var x = cx + m[0] * R, y = cy + m[1] * R, r = R * m[2], g = mctx.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(.5, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
+        g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(.22, "rgba(0,0,0,.9)"); g.addColorStop(.48, "rgba(0,0,0,.55)"); g.addColorStop(.72, "rgba(0,0,0,.2)"); g.addColorStop(.9, "rgba(0,0,0,.05)"); g.addColorStop(1, "rgba(0,0,0,0)");
         mctx.fillStyle = g; mctx.fillRect(0, 0, w, h);
       });
       if (p >= 1) { mctx.fillStyle = "#000"; mctx.fillRect(0, 0, w, h); revelado = true; }

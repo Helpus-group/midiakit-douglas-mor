@@ -639,3 +639,29 @@ body.travado{overflow:hidden}
   .contato-email b{font-size:min(4.1vw,18px)}
 }
 .rodape{padding-top:60px}
+
+/* ---------- REVISÃO 12 (25/11/2026) ---------- */
+/* desktop: menos espaço entre os blocos (a rampa azul acompanha) */
+@media (min-width:901px){
+  .secao{padding-top:clamp(70px,8vw,120px);padding-bottom:clamp(70px,8vw,120px)}
+  :root{--ext:clamp(60px,12vw,200px);--fl:clamp(220px,26vw,380px)}
+}
+/* celular: menos espaço entre o Booking e o rodapé */
+@media (max-width:760px){
+  .booking{padding-bottom:40px}
+  .rodape{padding-top:10px}
+  .rodape-palco{height:clamp(340px,108vw,460px)}
+}
+/* rodapé: o nome fica atrás da foto */
+.rodape-palco .rodape-nome{z-index:0;opacity:1}
+.rodape-ascii{z-index:2;width:min(760px,96%)}
+
+/* rev. 13: figura opaca, sem esmaecer embaixo */
+.rodape-ascii{-webkit-mask:none;mask:none}
+
+/* rev. 16: figura do rodapé termina num degradê de opacidade (desktop e celular) */
+.rodape-ascii{-webkit-mask:linear-gradient(#000 58%,rgba(0,0,0,.6) 76%,transparent 97%);mask:linear-gradient(#000 58%,rgba(0,0,0,.6) 76%,transparent 97%)}
+.rodape-ascii{-webkit-mask:linear-gradient(#000 72%,rgba(0,0,0,.55) 86%,transparent 99%);mask:linear-gradient(#000 72%,rgba(0,0,0,.55) 86%,transparent 99%)}
+
+/* rev. 17: nome centralizado na altura da figura do Douglas */
+.rodape-palco .rodape-nome{top:50%;bottom:auto;transform:translateY(-50%);margin:0}

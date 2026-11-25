@@ -198,7 +198,7 @@
   /* ---------- Presskit · Card Stack (biblioteca): as fotos vão passando ---------- */
   /* Helix Spiral (biblioteca): fotos do presskit numa espiral 3D que gira sozinha e com o arrasto */
   const pk = $("#pk-helice"), pequeno = matchMedia("(max-width:760px)").matches;
-  Object.assign(pk.dataset, { cx: "helix-spiral", altura: pequeno ? "460" : "600", raio: pequeno ? "150" : "250", largura: pequeno ? "150" : "210", alturaItem: pequeno ? "205" : "290", espaco: "38", velocidade: "0.16", acento: "#4f5bff" });
+  Object.assign(pk.dataset, { cx: "helix-spiral", altura: pequeno ? "460" : "720", raio: pequeno ? "150" : "290", largura: pequeno ? "150" : "260", alturaItem: pequeno ? "205" : "370", espaco: "38", velocidade: "0.16", acento: "#4f5bff" });
   K.fotosPresskit.forEach((f, i) => { const im = el("img"); im.src = f; im.alt = `Douglas Mor, foto de divulgação ${i + 1}`; im.loading = "lazy"; pk.append(im); });
   revelar($$(".presskit-texto > *"), .08);
 
