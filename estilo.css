@@ -665,3 +665,5 @@ body.travado{overflow:hidden}
 
 /* rev. 17: nome centralizado na altura da figura do Douglas */
 .rodape-palco .rodape-nome{top:50%;bottom:auto;transform:translateY(-50%);margin:0}
+/* rev. 18: no celular o nome fica na frente da figura */
+@media (max-width:760px){.rodape-palco .rodape-nome{z-index:3}}
