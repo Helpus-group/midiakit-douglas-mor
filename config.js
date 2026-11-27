@@ -53,8 +53,7 @@ window.KIT = {
     { titulo: "SoundCloud", sub: "Todos os sets", texto: "Perfil com todos os sets e mixes.", capa: "assets/fotos/bio-11.webp", url: "https://soundcloud.com/djdouglasmor", tipo: "perfil", botao: "Abrir perfil" },
     { titulo: "Closing · Cerato", sub: "Closing Set for Rafael Cerato", texto: "Anti-Dope · 24.10.2026 · closing depois das três horas de Rafael Cerato", capa: "assets/capas/set-cerato.webp", url: "https://soundcloud.com/djdouglasmor/douglas-mor-closing-set-for" },
     { titulo: "Anti-Dope 3 anos", sub: "Warm-up Set · 3 anos da Anti-Dope", texto: "Anti-Dope · 27.06.2026 · aniversário de 3 anos da casa", capa: "assets/capas/set-antidope3.webp", url: "https://soundcloud.com/djdouglasmor/douglas-mor-warm-up-set-3-anos" },
-    { titulo: "Contest Amazon", sub: "Amazon Club · Vencedor do Contest", texto: "Amazon Club · 16.05 · set vencedor do contest", capa: "assets/capas/set-amazon-contest.webp", url: "https://soundcloud.com/djdouglasmor/douglas-mor-amazon-club" },
-    { titulo: "DM Radio Mix #02", sub: "DM Radio Mix #02", texto: "Deep House and House · 1:19:29", capa: "assets/capas/set-radio.webp", url: "https://soundcloud.com/djdouglasmor/sets/dm-radio-mix" }
+    { titulo: "Contest Amazon", sub: "Amazon Club · Vencedor do Contest", texto: "Amazon Club · 16.05 · set vencedor do contest", capa: "assets/capas/set-amazon-contest.webp", url: "https://soundcloud.com/djdouglasmor/douglas-mor-amazon-club" }
   ],
 
   videos: [
